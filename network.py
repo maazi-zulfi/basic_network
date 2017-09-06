@@ -12,9 +12,9 @@ label = dict['labels']
 train_data = np.array(data)/255.0
 train_data = train_data.reshape((-1,3,32,32))
 train_data = np.transpose(train_data,[0,2,3,1])
-label = np.array(label)
-label = np.array([label==0,label==1,label==2,label==3,label==4,label==5,label==6,label==7,label==8,label==9],dtype=np.int)
-label = np.transpose(label)
+# label = np.array(label)
+# label = np.array([label==0,label==1,label==2,label==3,label==4,label==5,label==6,label==7,label==8,label==9],dtype=np.int)
+# label = np.transpose(label)
 x1 = Input(batch_shape=(None, 32, 32, 3))
 
 x = ZeroPadding2D(padding=(1,1))(x1)# 34,34,3
@@ -34,11 +34,11 @@ x = Conv2D(filters= 256,kernel_size=(3,3),strides=(1,1), activation='relu')(x)#4
 x = MaxPool2D(pool_size=(2, 2))(x)#2,2,256
 
 x = Flatten()(x) #1024
-x = Dense(units=10)(x)
-x = Activation(activation='softmax')(x)
+x = Dense(units=1)(x)
+x = Activation(activation='sigmoid')(x)
 
 model = Model(x1,x)
-model.compile(optimizer='adam',loss='categorical_crossentropy',metrics=['accuracy'])
+model.compile(optimizer='adam',loss='mean_squared_error',metrics=['accuracy'])
 print model.summary()
 print "maaz is stupid"
 model.fit(x=train_data,y=label,batch_size=32,epochs=50)
