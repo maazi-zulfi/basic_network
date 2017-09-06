@@ -14,7 +14,7 @@ train_data = np.reshape(train_data,(-1,3,32,32))
 train_data = np.transpose(train_data,[0,2,3,1])
 label = np.array(label)
 label = np.array([label==0,label==1,label==2,label==3,label==4,label==5,label==6,label==7,label==8,label==9],dtype=np.int)
-
+label = np.transpose(label)
 x1 = Input(batch_shape=(None, 32, 32, 3))
 
 x = ZeroPadding2D(padding=(1,1))(x1)# 34,34,3
