@@ -10,7 +10,8 @@ with open('/home/maaz/dev/projects/data/cifar-10-batches-py/data_batch_1', 'rb')
 data = dict['data']
 label = dict['labels']
 train_data = data/255.0
-train_data = np.reshape(train_data,(10000,32,32,3))
+train_data = np.reshape(train_data,(10000,3,32,32))
+train_data = np.transpose(train_data,[0,2,3,1])
 
 x1 = Input(batch_shape=(None, 32, 32, 3))
 
