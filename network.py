@@ -1,5 +1,15 @@
+
+import cPickle
+import numpy as np
 from keras.models import Model,Sequential
 from keras.layers import Conv2D, MaxPool2D, Input, ZeroPadding2D, Dense, Flatten, Activation
+
+with open('/home/maaz/dev/projects/data/cifar-10-batches-py/data_batch_1', 'rb') as fo:
+    dict = cPickle.load(fo)
+
+data = dict['data']
+label = dict['labels']
+train_data = data/255.0
 
 x1 = Input(batch_shape=(None, 32, 32, 3))
 
@@ -27,6 +37,6 @@ model = Model(x1,x)
 model.compile(optimizer='adam',loss='mean_squared_error',metrics=['accuracy'])
 print model.summary()
 print "maaz is stupid"
-model.fit()
+model.fit(x=train_data,y=label,batch_size=32,epochs=50)
 #model = Sequential()
 #model.add(Conv2D())
