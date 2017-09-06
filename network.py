@@ -26,6 +26,7 @@ x = Activation(activation='hard_sigmoid')(x)
 model = Model(x1,x)
 model.compile(optimizer='adam',loss='mean_squared_error',metrics=['accuracy'])
 print model.summary()
+print "maaz is stupid"
 model.fit()
 #model = Sequential()
 #model.add(Conv2D())
