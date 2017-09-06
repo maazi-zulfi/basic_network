@@ -38,7 +38,7 @@ x = Dense(units=1)(x)
 x = Activation(activation='sigmoid')(x)
 
 model = Model(x1,x)
-model.compile(optimizer='adam',loss='mean_squared_error',metrics=['accuracy'])
+model.compile(optimizer='adam',loss='categorical_crossentropy',metrics=['accuracy'])
 print model.summary()
 print "maaz is stupid"
 model.fit(x=train_data,y=label,batch_size=32,epochs=50)
