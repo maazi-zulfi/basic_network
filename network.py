@@ -33,7 +33,7 @@ x = MaxPool2D(pool_size=(2, 2))(x)#2,2,256
 
 x = Flatten()(x) #1024
 x = Dense(units=1)(x)
-x = Activation(activation='hard_sigmoid')(x)
+x = Activation(activation='sigmoid')(x)
 
 model = Model(x1,x)
 model.compile(optimizer='adam',loss='mean_squared_error',metrics=['accuracy'])
