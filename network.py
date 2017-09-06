@@ -34,7 +34,7 @@ x = Conv2D(filters= 256,kernel_size=(3,3),strides=(1,1), activation='relu')(x)#4
 x = MaxPool2D(pool_size=(2, 2))(x)#2,2,256
 
 x = Flatten()(x) #1024
-x = Dense(units=1)(x)
+x = Dense(units=10)(x)
 x = Activation(activation='softmax')(x)
 
 model = Model(x1,x)
