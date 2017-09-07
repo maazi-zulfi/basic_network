@@ -47,7 +47,7 @@ model = Model(x1,x)
 model.compile(optimizer='adam',loss='categorical_crossentropy',metrics=['accuracy'])
 print model.summary()
 # print "maaz is stupid"
-model.fit(x=train_data,y=label,batch_size=32,epochs=50)
+model.fit(x=train_data,y=label,batch_size=32,epochs=25)
 #model = Sequential()
 #model.add(Conv2D())
 model.save('/home/maaz/PycharmProjects/saved models/basic_network.h5')
