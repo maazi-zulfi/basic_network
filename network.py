@@ -6,8 +6,8 @@ from keras.layers import Conv2D, MaxPool2D, Input, ZeroPadding2D, Dense, Flatten
 
 data = []
 label = []
-i = 1
-for i in range(6):
+i = 0
+for i in range(5):
     with open('/home/maaz/dev/projects/data/cifar-10-batches-py/data_batch_{}'.format(i),'rb') as fo:
         dict0 = cPickle.load(fo)
     data.append(dict0['data'])
