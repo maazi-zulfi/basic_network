@@ -4,11 +4,17 @@ import numpy as np
 from keras.models import Model,Sequential
 from keras.layers import Conv2D, MaxPool2D, Input, ZeroPadding2D, Dense, Flatten, Activation
 
-with open('/home/maaz/dev/projects/data/cifar-10-batches-py/data_batch_1', 'rb') as fo:
-    dict = cPickle.load(fo)
+data = []
+label = []
+i = 1
+for i in range(6):
+    with open('/home/maaz/dev/projects/data/cifar-10-batches-py/data_batch_{}'.format(i),'rb') as fo:
+        dict0 = cPickle.load(fo)
+    data.append(dict0['data'])
+    label.extend(dict0['labels'])
 
-data = dict['data']
-label = dict['labels']
+np.concatenate([data])
+
 train_data = np.array(data)/255.0
 train_data = train_data.reshape((-1,3,32,32))
 train_data = np.transpose(train_data,[0,2,3,1])
@@ -44,3 +50,4 @@ print model.summary()
 model.fit(x=train_data,y=label,batch_size=32,epochs=50)
 #model = Sequential()
 #model.add(Conv2D())
+model.save('/home/maaz/PycharmProjects/saved models/basic_network.h5')
