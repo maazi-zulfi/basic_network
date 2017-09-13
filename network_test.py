@@ -14,7 +14,7 @@ test_data = np.array(t_data)/255.0
 test_data = test_data.reshape((-1,3,32,32))
 test_data = np.transpose(test_data,[0,2,3,1])
 
-result = model.predict(t_data)
+result = model.predict(test_data)
 d_label = np.argmax(result, axis=1)
 
 print classification_report()
