@@ -17,4 +17,4 @@ test_data = np.transpose(test_data,[0,2,3,1])
 result = model.predict(test_data)
 d_label = np.argmax(result, axis=1)
 
-print classification_report()
+print classification_report(t_label, result)
